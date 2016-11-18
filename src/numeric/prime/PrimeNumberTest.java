@@ -4,7 +4,12 @@ public class PrimeNumberTest {
 	public static void main(String[] args) {
 		PrimeNumber prime = new PrimeNumberImpl();
 		
-		for (int x : prime.getPrimes(10_000))
+		long start = System.currentTimeMillis();
+		System.out.println("Start");
+		
+		for (int x : prime.getPrimes(100_000))
 			assert prime.isPrime(x);
+		
+		System.out.println(String.format("End : %dms", System.currentTimeMillis() - start));
 	}
 }
