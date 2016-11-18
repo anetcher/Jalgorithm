@@ -6,24 +6,17 @@ import java.util.List;
 public class PrimeNumberImpl implements PrimeNumber {
 	
 	@Override
-	public boolean isPrime(int x) {
-		if(x == 1) {
-			return false;
-		} else {
-			for (int i = 2; i <= (int) Math.sqrt(x); i++) {
-				if (x % i == 0) return false;
-			}
-		}
-		return true;
-	}
-
-	@Override
 	public boolean isPrime(long x) {
-		if (x == 1) {
+		if(x <= 1) {
+			return false;
+		} else if (x == 2) {
+			return true;
+		} else if (x % 2 == 0) {
 			return false;
 		} else {
-			for (int divisor = 2; divisor <= (int) Math.sqrt(x); divisor++)
+			for (int divisor = 3; divisor <= (int) Math.sqrt(x); divisor += 2) {
 				if (x % divisor == 0) return false;
+			}
 		}
 		return true;
 	}
@@ -36,6 +29,7 @@ public class PrimeNumberImpl implements PrimeNumber {
 	@Override
 	public List<Integer> getPrimes(int a, int b) {
 		if (a > b) return null;
+		
 		else if (a <= 0) a = 2;
 		
 		boolean[] numbers = new boolean[b+1];

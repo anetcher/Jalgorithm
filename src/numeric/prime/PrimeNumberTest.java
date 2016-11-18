@@ -7,7 +7,7 @@ public class PrimeNumberTest {
 		long start = System.currentTimeMillis();
 		System.out.println("Start");
 		
-		for (int x : prime.getPrimes(100_000))
+		for (int x : prime.getPrimes(100))
 			assert prime.isPrime(x);
 		
 		System.out.println(String.format("End : %dms", System.currentTimeMillis() - start));
